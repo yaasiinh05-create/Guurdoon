@@ -54,6 +54,19 @@ router.post('/chat-requests', requireApproved, (req, res) => {
   if (isBlockedBetween(req.user.id, recipientId)) {
     return res.status(403).json({ error: 'Waxaa jira xog aanad haysato oo tallaab lagu qaadi karo.' });
   }
+  // A conversation that already exists means both sides may keep chatting
+  // directly — no new permission request is needed in either direction.
+  const conversation = one(
+    `SELECT id FROM conversations
+      WHERE (user_a_id = ? AND user_b_id = ?) OR (user_a_id = ? AND user_b_id = ?)`,
+    [req.user.id, recipientId, recipientId, req.user.id],
+  );
+  if (conversation) {
+    return res.status(409).json({
+      error: 'Wad horey uu wada hadal kartaa. Diiwaangelin cusub ma baahna.',
+      conversation_id: conversation.id,
+    });
+  }
   const existing = one(
     `SELECT * FROM chat_requests WHERE sender_id = ? AND recipient_id = ?`,
     [req.user.id, recipientId],
