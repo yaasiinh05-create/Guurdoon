@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { UPLOAD_DIR } from './db.js';
 import { attachUser, csrfProtection } from './middleware.js';
 import { addClient, heartbeat } from './realtime.js';
-import { verifySession, TOKEN_COOKIE } from './lib/auth.js';
+import { verifySession, TOKEN_COOKIE, CSRF_COOKIE } from './lib/auth.js';
 import { one, run } from './db.js';
 import { hashPassword } from './lib/auth.js';
 
