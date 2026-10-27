@@ -1,29 +1,25 @@
 {
   "name": "guurdoon",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Guurdoon — Hel lammaanaha noloshaada. Somali matchmaking platform.",
+  "type": "module",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "create-admin": "node server/scripts/create-admin.js",
+    "test": "node --test test/",
+    "seed-demo": "node server/scripts/seed-demo.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yaasiinh05-create/Guurdoon.git"
+  "engines": {
+    "node": ">=18"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/yaasiinh05-create/Guurdoon/issues"
-  },
-  "homepage": "https://github.com/yaasiinh05-create/Guurdoon#readme",
   "dependencies": {
-    "better-sqlite3": "^12.11.1",
     "cookie-parser": "^1.4.7",
     "express": "^5.3.0",
-    "jsonwebtoken": "^9.0.3",
-    "multer": "^2.5.0",
-    "node-sqlite3-wasm": "^0.8.61"
-  }
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "node-sqlite3-wasm": "^0.8.55"
+  },
+  "license": "MIT"
 }
