@@ -41,6 +41,21 @@ app.use((req, res, next) => {
   next();
 });
 
+/** Always hand out a CSRF cookie so the client can perform safe state changes. */
+app.use((req, res, next) => {
+  if (!req.cookies?.[CSRF_COOKIE]) {
+    const csrf = crypto.randomBytes(24).toString('base64url');
+    res.cookie(CSRF_COOKIE, csrf, {
+      httpOnly: false,
+      sameSite: 'lax',
+      secure: req.secure,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: '/',
+    });
+  }
+  next();
+});
+
 app.use('/api', csrfProtection);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'guurdoon' }));
