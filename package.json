@@ -8,8 +8,7 @@
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
     "create-admin": "node server/scripts/create-admin.js",
-    "test": "node --test test/",
-    "seed-demo": "node server/scripts/seed-demo.js"
+    "test": "node --test test/"
   },
   "engines": {
     "node": ">=18"
