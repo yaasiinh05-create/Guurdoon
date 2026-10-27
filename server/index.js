@@ -100,7 +100,7 @@ export function bootstrapAdmin() {
   const existingAdmin = one(`SELECT id FROM user_profiles WHERE role = 'admin' LIMIT 1`);
   if (existingAdmin) return existingAdmin;
   if (password.length < 10) {
-    console.warn('[guurdoon] ADMIN_PASSWORD waa ka yar tahay 10 xarf. Aka diyaar yow may."'.slice(0, 10));
+    console.warn('[guurdoon] ADMIN_PASSWORD waa ka yar tahay 10 xarf. Waa lagu talagalay inuu ka horreeyo.');
   }
   const authUserId = `admin-${Date.now()}`;
   const info = run(
