@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guurdoon — Hel lammaanaha noloshaada</title>
+  <meta name="description" content="Guurdoon waa hab lagu helo lammaanaha noloshaada si ammaan ah oo lagu kalsoocaado." />
+  <meta name="theme-color" content="#0f5132" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">U gudub waxa ugu muhiimka ah</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#/" aria-label="Guurdoon — bogga hore">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="34" height="34" role="img">
+            <path d="M24 6c8 8 12 14 12 20a12 12 0 1 1-24 0c0-6 4-12 12-20z" fill="#d4af37"/>
+            <path d="M24 14c5 5 8 9 8 13a8 8 0 0 1-16 0c0-4 3-8 8-13z" fill="#0f5132"/>
+            <circle cx="24" cy="27" r="3.4" fill="#ffffff"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Guurdoon</strong>
+          <small>Hel lammaanaha noloshaada</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Fur menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Menu">
+        <a href="#/" data-nav="home">Bogga Hore</a>
+        <a href="#/members" data-nav="members">Xogta</a>
+        <a href="#/chats" data-nav="chats" class="nav-with-badge">Wada Hadalka <span class="badge hidden" data-badge="chats">0</span></a>
+        <a href="#/notifications" data-nav="notifications" class="nav-with-badge">Ogaansho <span class="badge hidden" data-badge="notifications">0</span></a>
+        <a href="#/dashboard" data-nav="dashboard" class="member-only hidden">Xogtaaday</a>
+        <a href="#/admin" data-nav="admin" class="admin-only hidden">Maamulka</a>
+        <a href="#/privacy" data-nav="privacy">Sirta</a>
+        <a href="#/contact" data-nav="contact">Xiriir</a>
+        <span class="nav-actions">
+          <a href="#/login" data-nav="login" class="btn btn-outline guest-only">Soo Gal</a>
+          <a href="#/register" data-nav="register" class="btn btn-gold guest-only">Diiwaangeli</a>
+          <button type="button" class="btn btn-ghost member-only hidden" id="logout-btn">Ka Bax</button>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Guurdoon</strong>
+        <p class="muted">Hel lammaanaha noloshaada — si ammaan ah, si sharaad leh.</p>
+      </div>
+      <nav class="footer-links" aria-label="Xiriiraha bogga">
+        <a href="#/privacy">Bayaan Sirta</a>
+        <a href="#/contact">Xiriirka</a>
+        <a href="#/login">Soo Gal</a>
+        <a href="#/register">Diiwaangeli</a>
+      </nav>
+    </div>
+    <p class="copyright muted">© <span id="year"></span> Guurdoon. Dhammaan xuquuqdu waa xiran yahay.</p>
+  </footer>
+
+  <div id="toast-host" class="toast-host" aria-live="polite" aria-atomic="true"></div>
+  <div id="modal-host" class="modal-host hidden" role="dialog" aria-modal="true"></div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
