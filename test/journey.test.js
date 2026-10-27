@@ -45,7 +45,15 @@ class Client {
     }
   }
 
+  /** Fetches a CSRF cookie before the first state-changing request. */
+  async prime() {
+    if (!this.cookies.get('gd_csrf')) {
+      await this.request('GET', '/api/health');
+    }
+  }
+
   async request(method, url, body, options = {}) {
+    if (method !== 'GET' && !this.cookies.get('gd_csrf')) await this.prime();
     const headers = { ...(options.headers || {}) };
     const cookie = this.cookieHeader();
     if (cookie) headers.Cookie = cookie;
