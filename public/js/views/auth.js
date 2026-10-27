@@ -7,6 +7,14 @@ function countryOptions(selected) {
   return COUNTRIES.map((c) => `<option value="${c}"${c === selected ? ' selected' : ''}>${c}</option>`).join('');
 }
 
+/** Router entry for every auth-related path. */
+export function render(container, params) {
+  const path = window.location.hash.replace(/^#/, '').split('?')[0] || '/';
+  if (path === '/register') return renderRegister(container);
+  if (path === '/forgot-password') return renderForgotPassword(container);
+  return renderLogin(container);
+}
+
 export function renderLogin(container) {
   container.innerHTML = `
     <section class="section">
