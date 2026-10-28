@@ -15,7 +15,12 @@
  */
 const BASE = (process.env.BASE_URL || 'https://a4it6rlfom.dev.onappjet.com').replace(/\/$/, '');
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@guurdoon.so';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'GuurdoonAdmin!2024#Secure';
+// Read the admin password from the environment — never hardcode a live secret in the repo.
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+if (!ADMIN_PASSWORD) {
+  console.error('Set ADMIN_PASSWORD (and optionally ADMIN_EMAIL / BASE_URL) before running this script.');
+  process.exit(2);
+}
 
 let failures = 0;
 const log = (msg) => console.log(msg);
