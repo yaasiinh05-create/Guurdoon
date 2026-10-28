@@ -121,8 +121,10 @@ try {
   check('self-approval blocked', selfApprove.status, 403);
 
   // --- pending members cannot use member-only features -------------------
-  const pendingDir = await m1.get('/api/members');
-  check('pending member blocked from directory', pendingDir.status, 403);
+  const pendingChat = await m1.get('/api/chat-requests');
+  check('pending member blocked from member-only features', pendingChat.status, 403);
+  check('public directory stays readable before approval',
+    (await new Client().get('/api/members')).status, 200);
 
   // --- admin approves both members ----------------------------------------
   check('admin approves member 1',
