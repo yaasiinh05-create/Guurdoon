@@ -149,6 +149,21 @@ profile editing, chat request → accept → private conversation → persistent
 rejected-request locking, blocking and reporting, suspend/reactivate/remove, logout and the
 password-reset flow.
 
+### Live smoke test
+
+`scripts/live-smoke.mjs` drives the **deployed** site over real HTTP (no mocks): registration →
+admin approval → directory + name search → chat request → accept → private conversation →
+SSE real-time delivery → block/report → cleanup of the accounts it creates.
+
+```bash
+ADMIN_PASSWORD='<admin password>' npm run smoke
+# or against a local instance:
+BASE_URL=http://localhost:3000 ADMIN_PASSWORD='<admin password>' npm run smoke
+```
+
+The script exits non-zero if any check fails and always removes the test accounts it creates.
+`ADMIN_PASSWORD` is read from the environment — never hardcode it in the repository.
+
 ---
 
 ## Deployment notes
