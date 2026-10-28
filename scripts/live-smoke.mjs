@@ -151,7 +151,9 @@ try {
   const requestId = request.body?.request?.id ?? request.body?.id;
   const inbox = await m2.get('/api/chat-requests');
   check('recipient sees incoming request', inbox.body?.incoming?.length, 1);
-  check('sender sees outgoing request', inbox.body?.outgoing?.length, 1);
+  check('recipient sees no outgoing requests', inbox.body?.outgoing?.length, 0);
+  const outbox = await m1.get('/api/chat-requests');
+  check('sender sees outgoing request', outbox.body?.outgoing?.length, 1);
   const accept = await m2.post(`/api/chat-requests/${requestId}/accept`, {});
   check('request accepted', accept.status, 200);
   const conversationId = accept.body?.conversation?.id;
