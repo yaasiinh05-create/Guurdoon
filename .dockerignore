@@ -3,3 +3,8 @@ data
 test
 .git
 *.log
+*.sqlite
+*.sqlite3
+*.db
+v.txt
+.env
